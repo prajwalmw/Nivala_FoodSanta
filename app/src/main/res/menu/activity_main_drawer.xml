@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_giver"
+            android:title="Give"
+            android:icon="@drawable/ic_give_icon"/>
+        <item
+            android:id="@+id/nav_taker"
+            android:title="Take"
+            android:icon="@drawable/ic_take_icon"/>
+        <item
+            android:id="@+id/nav_selfie_point"
+            android:title="Selfie Point"
+            android:icon="@drawable/ic_selfie_point_icon"/>
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share_icon"
+            android:title="Share" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Logout"
+            android:icon="@drawable/ic_logout_icon"/>
+        <item
+            android:id="@+id/nav_login"
+            android:title="Login/SignUP" />
+
+
+
+
+    </group>
+</menu>
