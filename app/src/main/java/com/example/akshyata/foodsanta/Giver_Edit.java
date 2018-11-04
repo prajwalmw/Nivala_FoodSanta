@@ -217,6 +217,10 @@ String t,e,a,p;
             hour = hourOfDay;
             minute = minute_new;
 
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);          //Date
+            day = c.get(Calendar.DAY_OF_MONTH);
+
 
             String am_pm;
             if (hour > 12)
