@@ -29,7 +29,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -49,9 +48,12 @@ public class MainActivity extends AppCompatActivity
     private ViewFlipper simpleViewFlipper;
     Button btnNext,btnPrevious;
     ImageView no1,img1;
-    private StorageReference mStorageRef;
+   private StorageReference mStorageRef;
     private FirebaseDatabase firebasedatabase;
     private DatabaseReference databasereference;
+
+    Give_Act ga = new Give_Act();
+
 
     NavigationView navigationView;
     View headerview;
@@ -63,28 +65,28 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mStorageRef = FirebaseStorage.getInstance().getReference().child("take");
+       mStorageRef = FirebaseStorage.getInstance().getReference().child("give");
 
         //firebase database
         firebasedatabase = FirebaseDatabase.getInstance();  //1st time is imp.
        //firebasedatabase.setPersistenceEnabled(true);   //handling offline data
-        databasereference = firebasedatabase.getReference().child("taker_data"); //firebase database reference
+        databasereference = firebasedatabase.getReference().child("giver_data"); //firebase database reference
         //databasereference.keepSynced(true);     //keeps data fresh i.e sync the data
         if(firebasedatabase == null)
         {
             firebasedatabase = FirebaseDatabase.getInstance();      //2nd time also imp
             firebasedatabase.setPersistenceEnabled(true);   //handling offline data
-            databasereference = firebasedatabase.getReference().child("taker_data"); //firebase database reference
+            databasereference = firebasedatabase.getReference().child("giver_data"); //firebase database reference
             databasereference.keepSynced(true);     //keeps data fresh i.e sync the data
 
         }
 
 
-        no1 = (ImageView) findViewById(R.id.help1);
-        Glide.with(this /* context */)
+       /* no1 = (ImageView) findViewById(R.id.help1);
+        Glide.with(this /* context )
                 .using(new FirebaseImageLoader())
                 .load(mStorageRef)
-                .into(no1);
+                .into(no1);*/
 
         btnNext = (Button) findViewById(R.id.button_next);
         btnPrevious = (Button) findViewById(R.id.button_previous);

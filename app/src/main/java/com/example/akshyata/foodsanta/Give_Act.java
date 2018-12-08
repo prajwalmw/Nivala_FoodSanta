@@ -37,7 +37,7 @@ import java.util.Date;
 public class Give_Act extends AppCompatActivity {
     FloatingActionButton f_cam;
     //Uri selected_image;
-    private StorageReference mStorageRef;
+    public StorageReference mStorageRef;
     ProgressBar pb;
     ObjectAnimator animation;
     private static final int PERMISSION_REQUEST_CODE = 200;
