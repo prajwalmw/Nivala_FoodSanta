@@ -1,7 +1,6 @@
 package com.example.akshyata.foodsanta;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -14,7 +13,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -250,7 +248,8 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, "You're now signed in", Toast.LENGTH_SHORT).show();
             }
             else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this, "Sign in canceled", Toast.LENGTH_SHORT).show();
+                onBackPressed();
+               // Toast.makeText(this, "Sign in canceled", Toast.LENGTH_SHORT).show();
                 //finish();
             }
         }
@@ -265,7 +264,7 @@ public class MainActivity extends AppCompatActivity
         }
         if(!drawer.isDrawerOpen(GravityCompat.START))
         {
-            new AlertDialog.Builder(this)
+           /* new AlertDialog.Builder(this)
                     //  .setIcon(android.R.drawable.)
                     .setTitle("FoodSanta")
                     .setMessage("Are you sure you want to EXIT ?")
@@ -281,7 +280,9 @@ public class MainActivity extends AppCompatActivity
 
                     })
                     .setNegativeButton("No", null)
-                    .show();
+                    .show();*/
+            moveTaskToBack(true);
+            finish();
         }
 
 

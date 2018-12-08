@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -73,6 +74,7 @@ public class Give_Act extends AppCompatActivity {
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
@@ -87,7 +89,11 @@ public class Give_Act extends AppCompatActivity {
                 /* photoURI = FileProvider.getUriForFile(this,
                         "com.example.akshyata.foodsanta.android.fileprovider",
                         photoFile);*/
-                 photoURI = Uri.fromFile(photoFile);    //no fil proviers added
+                // photoURI = Uri.fromFile(photoFile);    //no fil proviers added
+                //api above 24
+                photoURI = FileProvider.getUriForFile(Give_Act.this,
+                        BuildConfig.APPLICATION_ID + ".provider", photoFile); //api above 24 file providers
+
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
