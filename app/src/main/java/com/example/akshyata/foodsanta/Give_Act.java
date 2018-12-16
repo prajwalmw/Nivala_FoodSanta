@@ -42,6 +42,7 @@ public class Give_Act extends AppCompatActivity {
     ObjectAnimator animation;
     private static final int PERMISSION_REQUEST_CODE = 200;
     static final int REQUEST_TAKE_PHOTO = 1;
+    StorageReference particular_image;
 
 
     String mCurrentPhotoPath;
@@ -52,8 +53,8 @@ public class Give_Act extends AppCompatActivity {
 // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
-        //File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File storageDir = getExternalFilesDir("Pictures");
+        //File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);    //internal stoarge
+        File storageDir = getExternalFilesDir("Pictures");  //external sd card
         if(!storageDir.exists())
         {
             if (!storageDir.mkdirs()){
@@ -233,20 +234,22 @@ public class Give_Act extends AppCompatActivity {
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK)
         {
-            pb.setVisibility(View.VISIBLE);
-            animation.start();
-
+           // pb.setVisibility(View.VISIBLE);
+           // animation.start();
          // Bundle extras = getIntent().getExtras();
              uri= photoURI;
+            Intent i = new Intent(getApplicationContext(),Giver_Edit.class);
+            i.setData(uri); //selectedimguri will use this data
+            startActivity(i);   //opens activity nd uploads in background.
 
 
-            StorageReference particular_image = mStorageRef.child(uri.getLastPathSegment()); //name of the paticular image
+             particular_image = mStorageRef.child(uri.getLastPathSegment()); //name of the paticular image
             //eg. //content//local_images//foo/4
             particular_image.putFile(photoURI).addOnSuccessListener
                     (this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            final Uri download_uri = taskSnapshot.getDownloadUrl(); //getting uri of the image stored
+                            /*final Uri download_uri = taskSnapshot.getDownloadUrl(); //getting uri of the image stored
                           // Photo_link p_link = new Photo_link(download_uri.toString());
                            // databasereference.push().setValue(p_link);
 
@@ -255,9 +258,10 @@ public class Give_Act extends AppCompatActivity {
                             Intent i = new Intent(getApplicationContext(),Giver_Edit.class);
                             i.setData(download_uri);
                             startActivity(i);
+*/
+                            Toast.makeText(getApplicationContext(),"Food Image Uploaded successfully",Toast.LENGTH_SHORT).show();
 
-
-                            Log.d("giver_image_success","eroooooor_on_success");
+                            Log.d("giver_image_success","no eroooooor_on_success");
                             //Toast.makeText(getApplicationContext(),"Image added",Toast.LENGTH_LONG).show();
                         }
                     });
