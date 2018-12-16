@@ -69,13 +69,13 @@ public class MainActivity extends AppCompatActivity
 
         //firebase database
         firebasedatabase = FirebaseDatabase.getInstance();  //1st time is imp.
-       //firebasedatabase.setPersistenceEnabled(true);   //handling offline data
+//       firebasedatabase.setPersistenceEnabled(true);   //handling offline data in MainActivity only !!!!!
         databasereference = firebasedatabase.getReference().child("giver_data"); //firebase database reference
         //databasereference.keepSynced(true);     //keeps data fresh i.e sync the data
         if(firebasedatabase == null)
         {
             firebasedatabase = FirebaseDatabase.getInstance();      //2nd time also imp
-            firebasedatabase.setPersistenceEnabled(true);   //handling offline data
+            firebasedatabase.setPersistenceEnabled(true);   //handling offline data in MainActivity only !!!!!
             databasereference = firebasedatabase.getReference().child("giver_data"); //firebase database reference
             databasereference.keepSynced(true);     //keeps data fresh i.e sync the data
 
