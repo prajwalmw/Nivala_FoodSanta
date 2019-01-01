@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,96 +11,106 @@
     tools:showIn="@layout/app_bar_main">
 
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-
-    <ViewFlipper
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/view_flipper">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="69dp">
 
-    <ImageView
-        android:id="@+id/help1"
-        android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:src="@drawable/help1"
-        android:background="#bababa"
-        android:layout_gravity="fill"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY" />
-
-        <ImageView
-            android:id="@+id/help2"
+        <ViewFlipper
+            android:id="@+id/view_flipper"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:src="@drawable/help2"
-            android:background="#bababa"
-            android:layout_gravity="fill"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY" />
+            android:layout_height="200dp">
 
-        <ImageView
-            android:id="@+id/help3"
+            <ImageView
+                android:id="@+id/help1"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_gravity="fill"
+                android:adjustViewBounds="true"
+                android:background="#bababa"
+                android:scaleType="fitXY"
+                android:src="@drawable/help1" />
+
+            <ImageView
+                android:id="@+id/help2"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_gravity="fill"
+                android:adjustViewBounds="true"
+                android:background="#bababa"
+                android:scaleType="fitXY"
+                android:src="@drawable/help2" />
+
+            <ImageView
+                android:id="@+id/help3"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_gravity="fill"
+                android:adjustViewBounds="true"
+                android:background="#bababa"
+                android:scaleType="fitXY"
+                android:src="@drawable/help3" />
+
+            <ImageView
+                android:id="@+id/help4"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_gravity="fill"
+                android:adjustViewBounds="true"
+                android:background="#bababa"
+                android:scaleType="fitXY"
+                android:src="@drawable/help4" />
+
+            <ImageView
+                android:id="@+id/hungerchart"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_gravity="fill"
+                android:adjustViewBounds="true"
+                android:background="#bababa"
+                android:scaleType="fitXY"
+                android:src="@drawable/hungerchart" />
+        </ViewFlipper>
+
+
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/view_flipper"
+            android:layout_marginTop="72dp"
+            android:background="#9500ffff"
+            android:paddingLeft="6dp"
+            android:text="&gt;"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button_previous"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="221dp"
+            android:layout_marginRight="221dp"
+            android:layout_marginTop="72dp"
+
+            android:background="#9500ffff"
+            android:text="&lt;"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <WebView
+            android:id="@+id/web_view"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:src="@drawable/help3"
-            android:background="#bababa"
-            android:layout_gravity="fill"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY" />
-
-        <ImageView
-            android:id="@+id/help4"
-            android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:background="#bababa"
-            android:src="@drawable/help4"
-            android:layout_gravity="fill"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY" />
-
-        <ImageView
-            android:id="@+id/hungerchart"
-            android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:background="#bababa"
-            android:layout_gravity="fill"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/hungerchart"/>
-    </ViewFlipper>
+            android:layout_height="match_parent"
+            android:layout_below="@+id/view_flipper" />
 
 
-    <Button
-        android:id="@+id/button_next"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:text="&gt;"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:background="#9500ffff"
-        android:paddingLeft="6dp"
-        android:layout_below="@+id/view_flipper"
-        android:layout_marginTop="72dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"/>
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/button_previous"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="221dp"
-        android:layout_marginRight="221dp"
-        android:layout_marginTop="72dp"
-
-        android:text="&lt;"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:background="#9500ffff"/>
-
-   </RelativeLayout>
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

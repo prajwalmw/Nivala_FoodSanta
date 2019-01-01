@@ -157,7 +157,7 @@ String t,e,a,p;
             // img.setVisibility(View.VISIBLE); //main
            // Toast.makeText(getApplicationContext(),"Got your Cycle !",Toast.LENGTH_LONG).show();
             Glide.with(getApplicationContext())
-                    .load(p_l.getPhotoUrl()).asBitmap().centerCrop().error(R.drawable.ic_selfie_point_icon)   //asbitmap after load always.
+                    .load(p_l.getPhotoUrl()).asBitmap().override(view.getMaxWidth(),view.getMaxHeight()).error(R.drawable.ic_selfie_point_icon)   //asbitmap after load always.
                     .into(new SimpleTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {

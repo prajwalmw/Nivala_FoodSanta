@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView;
     View headerview;
     TextView tt1,tt;
+    WebView wv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +83,8 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-
+        wv = (WebView) findViewById(R.id.web_view);
+        wv.loadUrl("https://robinhoodarmy.com/");
        /* no1 = (ImageView) findViewById(R.id.help1);
         Glide.with(this /* context )
                 .using(new FirebaseImageLoader())
