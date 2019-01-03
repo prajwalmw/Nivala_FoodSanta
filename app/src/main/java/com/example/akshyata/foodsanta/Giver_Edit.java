@@ -172,7 +172,36 @@ String t,e,a,p;
         d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                save();
+
+                if((r_btn_home.isChecked() || r_btn_pack.isChecked())
+                    && (!e_expiry.getText().toString().equals("") && !e_title.getText().toString().equals("")
+                    && (!e_address.getText().toString().equals("") || !e_phone.getText().toString().equals(""))))
+                {
+                    save();
+                }
+                else
+                {
+                    if(e_title.getText().toString().equals(""))
+                    {
+                        e_title.setError("Title is mandatory!");
+                    }
+
+                    if(e_expiry.getText().toString().equals(""))
+                    {
+                        e_expiry.setError("Expiry Duration is mandatory!");
+                    }
+
+                    if(e_address.getText().toString().equals("") && e_phone.getText().toString().equals(""))
+                    {
+                        Toast.makeText(getApplicationContext(),"Please enter atleast address or phone number",Toast.LENGTH_LONG).show();
+                    }
+
+                /*    if((!r_btn_home.isChecked() && !r_btn_pack.isChecked()))
+                {
+                    Toast.makeText(getApplicationContext(),"Please select food type!",Toast.LENGTH_SHORT).show();
+                }*/
+                }
+
             }
         });
 
@@ -294,10 +323,14 @@ String t,e,a,p;
 
 
     public void save(){
+
+
         t = e_title.getText().toString();
         e= e_expiry.getText().toString();
         a=e_address.getText().toString();
         p=e_phone.getText().toString();
+
+
 
 
         p_l = new Photo_link(selectedImgUri.toString(),t,e,a,p);
