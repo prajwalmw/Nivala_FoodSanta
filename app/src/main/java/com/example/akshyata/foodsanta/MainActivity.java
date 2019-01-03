@@ -1,18 +1,22 @@
 package com.example.akshyata.foodsanta;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -54,18 +58,25 @@ public class MainActivity extends AppCompatActivity
     private DatabaseReference databasereference;
 
     Give_Act ga = new Give_Act();
+   // private int checkedItem;
+    // String[] ngo_numbers;
 
+    AlertDialog.Builder dialogBuilder;
 
     NavigationView navigationView;
     View headerview;
     TextView tt1,tt;
     WebView wv;
+    private static final int PERMISSION_REQUEST_CODE = 200;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        requestPermission();    //requests permisiions....
 
        mStorageRef = FirebaseStorage.getInstance().getReference().child("give");
 
@@ -170,12 +181,42 @@ public class MainActivity extends AppCompatActivity
                         Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED)
 
                 {
-                    Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"9769025715"));
+                    displaySingleSelectionDialog();
+
+                    /* dialogBuilder = new AlertDialog.Builder(getApplicationContext());
+                    dialogBuilder.setTitle("Which org. you wanna call?");
+                    dialogBuilder.setSingleChoiceItems(ngo_numbers, checkedItem, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int which) {
+                            checkedItem = which;
+
+                            if("RotiBank".equals(ngo_numbers[checkedItem]))
+                            {
+                                Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"9769025715"));
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                getApplicationContext().startActivity(i);
+                            }
+
+                            if("Robinhood Army".equals(ngo_numbers[checkedItem]))
+                            {
+                                Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"7304154312"));
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                getApplicationContext().startActivity(i);
+                            }
+                        }
+                    });
+                    dialogBuilder.show();
+
+
+
+
+
+                   /* Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"9769025715"));
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getApplicationContext().startActivity(i);
+                    getApplicationContext().startActivity(i);*/
                     // return;
                     //myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //mContext.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+pl.getMobileData())));
+                    //mContext.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+pl.getMobileData())));*/
                 }
             }
         });
@@ -221,6 +262,90 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+   private void displaySingleSelectionDialog() {
+
+       final String[] ngo_numbers = {"RotiBank", "Robinhood Army"};
+       // ngo_numbers = getResources().getStringArray(R.array.ngo_numbers);
+       dialogBuilder = new AlertDialog.Builder(MainActivity.this);
+       dialogBuilder.setTitle("Donate Instantly!");
+       dialogBuilder.setIcon(R.drawable.ic_call_black_24dp);
+       dialogBuilder.setItems(ngo_numbers, new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialog, int which) {
+               // the user clicked on colors[which]
+               final String a = "tel:"+"9769025715";
+               final String b = "tel:"+"7304154312";
+
+               if("RotiBank".equals(ngo_numbers[which]))
+               {
+                   Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse(a));
+                   i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                   getApplicationContext().startActivity(i);
+               }
+
+                else if("Robinhood Army".equals(ngo_numbers[which]))
+               {
+                   Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse(b));
+                   i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                   getApplicationContext().startActivity(i);
+               }
+           }
+       });
+       dialogBuilder.show();
+
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+                    //onActivityResult(100,RESULT_OK,getIntent());
+                    // main logic
+                } else {
+                    // Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        // Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+
+                        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            new AlertDialog.Builder(this)
+                                    .setMessage("You need to allow access permissions")
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.cancel();
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                requestPermission();
+                                                //onActivityResult(100,RESULT_OK,getIntent());
+                                            }
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.cancel();
+                                        }
+                                    })
+                                    .create()
+                                    .show();
+                            /*showMessageOKCancel("You need to allow access permissions",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                           // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                requestPermission();
+                                            //}
+                                        }
+                                    });*/
+                        }
+                    }
+                }
+                break;
+        }
+    }
+
 
 
     @Override
@@ -258,6 +383,16 @@ public class MainActivity extends AppCompatActivity
                 //finish();
             }
         }
+    }
+
+    //Permission requests....
+    private void requestPermission() {
+
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.CALL_PHONE},
+                PERMISSION_REQUEST_CODE);
+//        onActivityResult(100,RESULT_OK,getIntent());
     }
 
     @Override

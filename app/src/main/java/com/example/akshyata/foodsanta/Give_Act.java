@@ -1,21 +1,16 @@
 package com.example.akshyata.foodsanta;
 
-import android.Manifest;
 import android.accessibilityservice.AccessibilityService;
 import android.animation.ObjectAnimator;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -112,7 +107,7 @@ public class Give_Act extends AppCompatActivity {
             // . write your main code to execute, It will execute if the permission is already given.
 
         } else {
-            requestPermission();
+            //requestPermission();
         }
 
         mStorageRef = FirebaseStorage.getInstance().getReference().child("give");
@@ -156,18 +151,18 @@ public class Give_Act extends AppCompatActivity {
         return true;
     }
 
-    private void requestPermission() {
+  /*  private void requestPermission() {
 
         ActivityCompat.requestPermissions(Give_Act.this,
                 new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.CALL_PHONE},
                 PERMISSION_REQUEST_CODE);
 //        onActivityResult(100,RESULT_OK,getIntent());
-    }
+    }*/
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+  /*  public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -210,13 +205,13 @@ public class Give_Act extends AppCompatActivity {
                                                 requestPermission();
                                             //}
                                         }
-                                    });*/
+                                    });
                         }
                     }
                 }
                 break;
         }
-    }
+    }*/
 
 
    /* private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
