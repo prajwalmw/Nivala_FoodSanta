@@ -222,7 +222,8 @@ String t,e,a,p;
                 // ///Only Show till Date Not More than That.
                 final DatePickerDialog dialog = new DatePickerDialog(this,
                         pickerListener, year, month, day);
-                dialog.getDatePicker();
+                dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                //dialog.getDatePicker();
                // testDate1=null;
                 return dialog;
 
@@ -249,6 +250,10 @@ String t,e,a,p;
             year = c.get(Calendar.YEAR);
             month = c.get(Calendar.MONTH);          //Date
             day = c.get(Calendar.DAY_OF_MONTH);
+
+            /*final int h_diff = c.get(Calendar.HOUR_OF_DAY);
+            final int m_diff = c.get(Calendar.MINUTE);
+            final Calendar today = Calendar.getInstance();*/
 
 
             String am_pm;
