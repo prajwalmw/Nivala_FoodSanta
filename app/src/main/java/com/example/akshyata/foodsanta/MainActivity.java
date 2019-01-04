@@ -96,11 +96,6 @@ public class MainActivity extends AppCompatActivity
 
         wv = (WebView) findViewById(R.id.web_view);
         wv.loadUrl("https://robinhoodarmy.com/");
-       /* no1 = (ImageView) findViewById(R.id.help1);
-        Glide.with(this /* context )
-                .using(new FirebaseImageLoader())
-                .load(mStorageRef)
-                .into(no1);*/
 
         btnNext = (Button) findViewById(R.id.button_next);
         btnPrevious = (Button) findViewById(R.id.button_previous);
@@ -143,7 +138,7 @@ public class MainActivity extends AppCompatActivity
 
 
                     Glide.with(getApplicationContext())
-                            .load(firebaseauth.getCurrentUser().getPhotoUrl()).asBitmap().atMost().error(R.drawable.ic_selfie_point_icon)   //asbitmap after load always.
+                            .load(firebaseauth.getCurrentUser().getPhotoUrl()).asBitmap().error(R.drawable.ic_selfie_point_icon)   //asbitmap after load always.
                             .into(new SimpleTarget<Bitmap>() {
                                 @Override
                                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
@@ -181,42 +176,7 @@ public class MainActivity extends AppCompatActivity
                         Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED)
 
                 {
-                    displaySingleSelectionDialog();
-
-                    /* dialogBuilder = new AlertDialog.Builder(getApplicationContext());
-                    dialogBuilder.setTitle("Which org. you wanna call?");
-                    dialogBuilder.setSingleChoiceItems(ngo_numbers, checkedItem, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int which) {
-                            checkedItem = which;
-
-                            if("RotiBank".equals(ngo_numbers[checkedItem]))
-                            {
-                                Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"9769025715"));
-                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                getApplicationContext().startActivity(i);
-                            }
-
-                            if("Robinhood Army".equals(ngo_numbers[checkedItem]))
-                            {
-                                Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"7304154312"));
-                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                getApplicationContext().startActivity(i);
-                            }
-                        }
-                    });
-                    dialogBuilder.show();
-
-
-
-
-
-                   /* Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"9769025715"));
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getApplicationContext().startActivity(i);*/
-                    // return;
-                    //myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //mContext.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+pl.getMobileData())));*/
+                    displaySingleSelectionDialog();    //function call
                 }
             }
         });
@@ -227,32 +187,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
-       /* NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);   //displays text of header of nav drawer.
-        View headerview = navigationView.getHeaderView(0);
-        TextView tt1 = (TextView) headerview.findViewById(R.id.textview_username);
-        tt1.setText(firebaseauth.getCurrentUser().getDisplayName());//username of logged in user.
-
-        TextView tt = (TextView) headerview.findViewById(R.id.textView_emailid);
-        tt.setText(firebaseauth.getCurrentUser().getEmail());//email id of logged in user.
-
-        final ImageView img1 = (ImageView) headerview.findViewById(R.id.imageView_userimage);
-        Glide.with(getApplicationContext())
-                .load(firebaseauth.getCurrentUser().getPhotoUrl()).asBitmap().atMost().error(R.drawable.ic_selfie_point_icon)   //asbitmap after load always.
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        img1.setImageBitmap(resource);
-                    }
-                });
-
-
-        Log.d("text","Nav : "+tt);*/
-
-
-
-
-         navigationView = (NavigationView) findViewById(R.id.nav_view);   //displays text of header of nav drawer.
+  navigationView = (NavigationView) findViewById(R.id.nav_view);   //displays text of header of nav drawer.
          headerview = navigationView.getHeaderView(0);
          tt1 = (TextView) headerview.findViewById(R.id.textview_username);
          tt = (TextView) headerview.findViewById(R.id.textView_emailid);
@@ -299,8 +234,6 @@ public class MainActivity extends AppCompatActivity
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
-                    //onActivityResult(100,RESULT_OK,getIntent());
                     // main logic
                 } else {
                     // Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
@@ -330,15 +263,7 @@ public class MainActivity extends AppCompatActivity
                                     })
                                     .create()
                                     .show();
-                            /*showMessageOKCancel("You need to allow access permissions",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                           // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                                requestPermission();
-                                            //}
-                                        }
-                                    });*/
+
                         }
                     }
                 }
@@ -364,7 +289,7 @@ public class MainActivity extends AppCompatActivity
 
 
                 Glide.with(getApplicationContext())
-                        .load(firebaseauth.getCurrentUser().getPhotoUrl()).asBitmap().atMost().error(R.drawable.ic_selfie_point_icon)   //asbitmap after load always.
+                        .load(firebaseauth.getCurrentUser().getPhotoUrl()).asBitmap().error(R.drawable.ic_selfie_point_icon)   //asbitmap after load always.
                         .into(new SimpleTarget<Bitmap>() {
                             @Override
                             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
@@ -404,23 +329,7 @@ public class MainActivity extends AppCompatActivity
         }
         if(!drawer.isDrawerOpen(GravityCompat.START))
         {
-           /* new AlertDialog.Builder(this)
-                    //  .setIcon(android.R.drawable.)
-                    .setTitle("FoodSanta")
-                    .setMessage("Are you sure you want to EXIT ?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            moveTaskToBack(true);
-                                finish();
-                                //return;
 
-                        }
-
-                    })
-                    .setNegativeButton("No", null)
-                    .show();*/
             moveTaskToBack(true);
             finish();
         }
