@@ -95,7 +95,11 @@ public class MainActivity extends AppCompatActivity
         }
 
         wv = (WebView) findViewById(R.id.web_view);
-        wv.loadUrl("https://robinhoodarmy.com/");
+        wv.setInitialScale(1);      //webview page matches the screen size.
+        wv.getSettings().setLoadWithOverviewMode(true);
+        wv.getSettings().setUseWideViewPort(true);
+        wv.getSettings().setJavaScriptEnabled(true);
+        wv.loadUrl("https://prajwalwaingankar.wixsite.com/nivala");
 
         btnNext = (Button) findViewById(R.id.button_next);
         btnPrevious = (Button) findViewById(R.id.button_previous);
