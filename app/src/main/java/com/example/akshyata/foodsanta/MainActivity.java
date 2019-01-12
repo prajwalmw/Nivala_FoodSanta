@@ -377,7 +377,16 @@ public class MainActivity extends AppCompatActivity
             Intent int_take = new Intent(this, Take_Act.class);
             startActivity(int_take);
 
-        } else if (id == R.id.nav_login) {
+        }
+
+        else if(id == R.id.nav_selfie_point)
+        {
+           Intent int_selfie = new Intent(this,Selfie_Act.class);
+           startActivity(int_selfie);
+
+        }
+
+        else if (id == R.id.nav_login) {
             Intent int_login = new Intent(this, Give_Act.class);
             startActivity(int_login);
 
