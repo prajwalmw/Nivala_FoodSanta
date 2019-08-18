@@ -103,7 +103,14 @@ public class MainActivity extends AppCompatActivity
 
         btnNext = (Button) findViewById(R.id.button_next);
         btnPrevious = (Button) findViewById(R.id.button_previous);
+
+        int gallery_grid_Images[] = {R.drawable.help1, R.drawable.help2, R.drawable.help3, R.drawable.help4, R.drawable.hungerchart};
         simpleViewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
+        for(int i=0;i<gallery_grid_Images.length;i++)
+        {
+            //  This will create dynamic image view and add them to ViewFlipper
+            setFlipperImage(gallery_grid_Images[i]);
+        }
 
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -199,6 +206,14 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
+    }
+
+    private void setFlipperImage(int res) {
+        Log.i("Set Filpper Called", res+"");
+        ImageView image = new ImageView(getApplicationContext());
+        image.setBackgroundResource(res);
+        simpleViewFlipper.addView(image);
+        simpleViewFlipper.startFlipping();
     }
 
    private void displaySingleSelectionDialog() {
