@@ -227,17 +227,17 @@ public class MainActivity extends AppCompatActivity
            @Override
            public void onClick(DialogInterface dialog, int which) {
                // the user clicked on colors[which]
-               final String a = "tel:"+"9769025715";
-               final String b = "tel:"+"7304154312";
+               final String a = "tel:"+"7304154312";
+               final String b = "tel:"+"9769779980";
 
-               if("RotiBank".equals(ngo_numbers[which]))
+               if("Team A".equals(ngo_numbers[which]))
                {
                    Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse(a));
                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                    getApplicationContext().startActivity(i);
                }
 
-                else if("Robinhood Army".equals(ngo_numbers[which]))
+                else if("Team B".equals(ngo_numbers[which]))
                {
                    Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse(b));
                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
