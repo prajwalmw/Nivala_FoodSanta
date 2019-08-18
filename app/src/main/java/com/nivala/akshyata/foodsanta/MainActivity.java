@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity
 
    private void displaySingleSelectionDialog() {
 
-       final String[] ngo_numbers = {"RotiBank", "Robinhood Army"};
+       final String[] ngo_numbers = {"Team A", "Team B"};
        // ngo_numbers = getResources().getStringArray(R.array.ngo_numbers);
        dialogBuilder = new AlertDialog.Builder(MainActivity.this);
        dialogBuilder.setTitle("Donate Instantly!");
@@ -418,8 +418,8 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("text/plain");
             i.putExtra(Intent.EXTRA_SUBJECT, "My application name");
-            String sAux = "\nAn initiative to SAVE food\nFeed the Hungry !\n";
-            sAux = sAux + "https://play.google.com/store/apps/details?id=Orion.Soft \n\n";
+            String sAux = "\nNivala: An initiative to save food and share it to the needy!\n\nDownload the app now and make your contribution to the social cause!\n\n Your one nivala can save millions of life!\n\n";
+            sAux = sAux + "https://play.google.com/store/apps/details?id=com.nivala.akshyata.foodsanta";
             i.putExtra(Intent.EXTRA_TEXT, sAux);
             startActivity(Intent.createChooser(i, "Help Needy !!!"));
 
