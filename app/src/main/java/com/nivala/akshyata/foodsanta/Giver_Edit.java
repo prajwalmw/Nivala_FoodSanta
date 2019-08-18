@@ -1,4 +1,4 @@
-package com.example.akshyata.foodsanta;
+package com.nivala.akshyata.foodsanta;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
