@@ -38,11 +38,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.nivala.akshyata.foodsanta.Give_Act" />
-        <activity android:name="com.nivala.akshyata.foodsanta.Giver_Edit" />
+
+        <activity android:name="com.nivala.akshyata.foodsanta.Give_Act"
+            android:label="@string/title_activity_giver_add"/>
+
+        <activity android:name="com.nivala.akshyata.foodsanta.Giver_Edit"
+            android:label="@string/title_activity_giver_edit"/>
+
         <activity
             android:name="com.nivala.akshyata.foodsanta.Take_Act"
-            android:label="Take" />
+            android:label="@string/title_activity_taker_add" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -54,7 +59,8 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name="com.nivala.akshyata.foodsanta.Selfie_Act"></activity>
+        <activity android:name="com.nivala.akshyata.foodsanta.Selfie_Act"
+            android:label="@string/title_activity_selfie_point"></activity>
     </application>
 
 </manifest>
