@@ -1,4 +1,4 @@
-package com.example.akshyata.foodsanta;
+package com.nivala.akshyata.foodsanta;
 
 import android.Manifest;
 import android.content.DialogInterface;
