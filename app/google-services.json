@@ -8,7 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:358711366507:android:ebd6d5e76f465cf5",
+        "mobilesdk_app_id": "1:358711366507:android:6da6437a41502dc493322e",
         "android_client_info": {
           "package_name": "com.example.akshyata.foodsanta"
         }
@@ -33,20 +33,58 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "358711366507-4f4247077c8dpa3ks2iq9pfr3omi7p4h.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358711366507:android:4dd27c23ac3338af",
+        "android_client_info": {
+          "package_name": "com.nivala.akshyata.foodsanta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358711366507-s5kr7vosbl6ip85mmgl44bnc2hcl0vjm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nivala.akshyata.foodsanta",
+            "certificate_hash": "ce611e2ed056a53cb27bbd7c7ef689774b18a246"
+          }
         },
-        "ads_service": {
-          "status": 2
+        {
+          "client_id": "358711366507-c0pbm9bna8k42ilgm8mk3k8ssipgel8f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nivala.akshyata.foodsanta",
+            "certificate_hash": "497b814cefea13e65d3ea2fa6ec832cc4465e1b7"
+          }
+        },
+        {
+          "client_id": "358711366507-4f4247077c8dpa3ks2iq9pfr3omi7p4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8H0WOMqX2JVaS619dm8AhV3y2aJ9pRzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358711366507-4f4247077c8dpa3ks2iq9pfr3omi7p4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
