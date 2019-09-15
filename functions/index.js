@@ -24,4 +24,3 @@ exports.sendGiveDataAddedTrigger = functions.database.ref('/giver_data/{pushId}'
 
 	});
 
-	
