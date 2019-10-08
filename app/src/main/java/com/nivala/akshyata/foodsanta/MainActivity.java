@@ -38,6 +38,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -78,7 +79,9 @@ public class MainActivity extends AppCompatActivity
 
         requestPermission();    //requests permisiions....
 
-       mStorageRef = FirebaseStorage.getInstance().getReference().child("give");
+        FirebaseMessaging.getInstance().subscribeToTopic("giver_data");
+
+        mStorageRef = FirebaseStorage.getInstance().getReference().child("give");
 
         //firebase database
         firebasedatabase = FirebaseDatabase.getInstance();  //1st time is imp.
@@ -171,6 +174,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         };
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

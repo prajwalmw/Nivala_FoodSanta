@@ -1,10 +1,10 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-admin.initializeApp();
+admin.initializeApp(functions.config().firebase);
 
-exports.sendGiveDataAddedTrigger = functions.database.ref('/giver_data/{pushId}').onWrite(event =>
+exports.sendGiveDataAddedTrigger = functions.database.ref('/giver_data/{pushId}').onWrite((change, context) =>
 	{
-		const give = event.data.val();
+		const give = change.after.val();
 		const payload = {
 			notification : {
 				title : 'New Food Added',
