@@ -73,7 +73,7 @@ public class Take_Act extends AppCompatActivity {
         myRef = database.getReference().child("giver_data");
        myRef.keepSynced(true);  //offline data handling!! whenever to want to make only that specific node to be handled in offline mode !!
 
-        myRef.orderByValue().limitToLast(4).addValueEventListener(new ValueEventListener() {    //offline data handling
+        myRef.orderByValue().addValueEventListener(new ValueEventListener() {    //offline data handling
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
